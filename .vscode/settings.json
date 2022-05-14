@@ -1,3 +1,10 @@
 {
-    "javascript.format.semicolons": "remove"
+    "javascript.format.semicolons": "remove",
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "tailwindCSS.includeLanguages": {
+        "javascript": "javascript",
+        "html": "HTML"
+    },
 }

@@ -5,8 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "yarn dev",
-            "name": "yarn dev",
+            "command": "p dev",
+            "name": "p dev",
             "request": "launch",
             "type": "node-terminal"
         }

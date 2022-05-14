@@ -7,4 +7,6 @@
         "javascript": "javascript",
         "html": "HTML"
     },
+    "prettier.singleQuote": true,
+    "prettier.semi": false,
 }

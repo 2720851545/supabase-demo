@@ -29,8 +29,6 @@ export default function CreatePost() {
     }
 
     const { id, email } = supabase.auth.user()
-    const user = supabase.auth.user()
-    console.log(user)
 
     const res = await supabase
       .from('posts')

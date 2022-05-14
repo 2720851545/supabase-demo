@@ -31,8 +31,10 @@ export default function MyPosts() {
   }
 
   async function delPost(id) {
-    await supabase.from('posts').delete('id', 'eq', id).match({ id })
-    fetchPosts()
+    if (confirm('确定删除？')) {
+      await supabase.from('posts').delete('id', 'eq', id).match({ id })
+      fetchPosts()
+    }
   }
 
   if (loading) return <div className="text-2xl">加载中......</div>

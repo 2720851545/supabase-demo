@@ -23,7 +23,7 @@ export default function EditPost() {
       .single()
     setPost(res.data)
     setLoading(false)
-  }, [])
+  }, [router.isReady])
 
   if (loading) return <div className="">加载中......</div>
   function changePost(e) {
@@ -31,10 +31,11 @@ export default function EditPost() {
   }
 
   async function updatePost() {
-    const res = await supabase
+    await supabase
       .from('posts')
       .update({ ...post })
       .match({ id: router.query.id })
+    router.push('/my-posts')
   }
 
   return (

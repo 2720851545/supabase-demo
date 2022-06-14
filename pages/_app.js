@@ -1,10 +1,13 @@
 // pages/_app.js
 import Link from 'next/link'
+import Head from 'next/head'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { supabase } from '../utils/api'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter()
   const [user, setUser] = useState(null)
   // 只会在第一次渲染时执行
   useEffect(() => {
@@ -17,6 +20,19 @@ function MyApp({ Component, pageProps }) {
       authListener?.unsubscribe()
     }
   }, [])
+
+  const handleRouteChange = (url) => {
+    window.gtag('config', 'G-88451X95G5', {
+      page_path: url,
+    })
+  }
+
+  useEffect(() => {
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
   async function checkUser() {
     const user = supabase.auth.user()
     setUser(user)
